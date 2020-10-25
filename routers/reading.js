@@ -60,12 +60,12 @@ readingRouter
 
             if (reading) {
                 reading.reading_date = request.body.reading_date;
-                item.free_chlorine = request.body.free_chlorine;
-                item.combined_chlorine = request.body.combined_chlorine;
-                item.ph = request.body.ph;
-                item.alkalinity = request.body.alkalinity;
-                item.calcium = request.body.calcium;
-                item.cyanuric_acid = request.body.cyanuric_acid;
+                reading.free_chlorine = request.body.free_chlorine;
+                reading.combined_chlorine = request.body.combined_chlorine;
+                reading.ph = request.body.ph;
+                reading.alkalinity = request.body.alkalinity;
+                reading.calcium = request.body.calcium;
+                reading.cyanuric_acid = request.body.cyanuric_acid;
 
                 reading.save();
 
@@ -92,8 +92,8 @@ readingRouter
             if (reading) {
                 for (var property in request.body) {
                     if (request.body.hasOwnProperty(property)) {
-                        if (typeof item[property] !== 'undefined') {
-                            item[property] = request.body[property];
+                        if (typeof reading[property] !== 'undefined') {
+                            reading[property] = request.body[property];
                         }
                     }
                 }

@@ -35,6 +35,6 @@ var readingSchema = new Schema({
         type: Number,
         required: true,
     },
-}, { collection: 'dataItems' });
+}, { collection: 'Reading' });
 
 module.exports = mongoose.model('Reading', readingSchema);

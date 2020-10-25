@@ -1,7 +1,7 @@
 var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
-var itemRouter = require('./routers/item');
+var readingRouter = require('./routers/reading');
 var env = require('.env')
 
 var app = express();
@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-app.use('/api', itemRouter);
+app.use('/api', readingRouter);
 
 app.listen(PORT, function() {
     console.log('Listening on port ' + PORT);
