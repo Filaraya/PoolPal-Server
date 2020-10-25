@@ -17,23 +17,23 @@ var readingSchema = new Schema({
     },
     combined_chlorine: {
         type: Number,
-        required: true,
+        required: false,
     },
     ph: {
         type: Number,
-        required: true,
+        required: false,
     },
     alkalinity: {
         type: Number,
-        required: true,
+        required: false,
     },
     calcium: {
         type: Number,
-        required: true,
+        required: false,
     },
     cyanuric_acid: {
         type: Number,
-        required: true,
+        required: false,
     },
 }, { collection: 'Reading' });
 
