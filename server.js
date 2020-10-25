@@ -2,13 +2,13 @@ var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var readingRouter = require('./routers/reading');
-var env = require('.env')
+require('dotenv').config();
 
 var app = express();
 
 var PORT = 8080;
-var USER_NAME = env.USER_NAME;
-var PASSWORD = env.PASSWORD;
+var USER_NAME = process.env.USER_NAME;
+var PASSWORD = process.env.PASSWORD;
 var HOST_NAME = 'cluster0.xusy1.mongodb.net';
 var DATABASE_NAME = 'shoppingList';
 
