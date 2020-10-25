@@ -55,7 +55,7 @@ readingRouter
 
         var readingId = request.params.readingId;
 
-        Reading.findOne({ id: readingId }, function(error, reading) {
+        Reading.findOne({ _id: readingId }, function(error, reading) {
             if (error) {
                 response.status(500).send(error);
                 return;
@@ -86,7 +86,7 @@ readingRouter
 
         var readingId = request.params.readingId;
 
-        Reading.findOne({ id: readingId }, function(error, reading) {
+        Reading.findOne({ _id: readingId }, function(error, reading) {
             if (error) {
                 response.status(500).send(error);
                 return;
@@ -117,7 +117,7 @@ readingRouter
 
         var readingId = request.params.readingId;
 
-        Reading.findOne({ id: readingId }, function(error, reading) {
+        Reading.findOne({ _id: readingId }, function(error, reading) {
             if (error) {
                 response.status(500).send(error);
                 return;
