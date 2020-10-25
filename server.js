@@ -1,8 +1,9 @@
+require('dotenv').config();
 var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var readingRouter = require('./routers/reading');
-require('dotenv').config();
+var userRouter = require('./routers/user');
 
 var app = express();
 
@@ -20,6 +21,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use('/api', readingRouter);
+app.use('/api', userRouter);
 
 app.listen(PORT, function() {
     console.log('Listening on port ' + PORT);

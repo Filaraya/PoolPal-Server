@@ -1,3 +1,4 @@
 db_credentials.txt
 *.pem
 *.env
+node_modules
