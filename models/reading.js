@@ -2,9 +2,8 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var readingSchema = new Schema({
-    id: {
+    user_id: {
         type: Number,
-        unique: true,
         required: true,
     },
     reading_date: {

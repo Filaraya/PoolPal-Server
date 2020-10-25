@@ -7,6 +7,7 @@ readingRouter
     .route('/readings')
     .post(function(request, response) {
         console.log('POST /readings');
+        console.log(request.body);
 
         var reading = new Reading(request.body);
 
