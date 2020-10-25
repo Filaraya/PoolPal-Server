@@ -10,7 +10,7 @@ var PORT = 8080;
 var USER_NAME = process.env.USER_NAME;
 var PASSWORD = process.env.PASSWORD;
 var HOST_NAME = 'cluster0.xusy1.mongodb.net';
-var DATABASE_NAME = 'Reading';
+var DATABASE_NAME = 'PoolPal';
 
 mongoose.connect('mongodb+srv://' + USER_NAME + ':' + PASSWORD + '@' + HOST_NAME + '/' + DATABASE_NAME);
 
