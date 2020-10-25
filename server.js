@@ -31,7 +31,7 @@ var Reading = mongoose.model('Reading', {
     alkalinity: Number,
     calcium: Number,
     cyanuric_acid: Number
-});
+}, 'Reading');
 
 
 // Get all readings
