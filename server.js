@@ -4,8 +4,11 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var readingRouter = require('./routers/reading');
 var userRouter = require('./routers/user');
+var cors = require('cors');
 
 var app = express();
+
+app.use(cors());
 
 var PORT = 8080;
 var USER_NAME = process.env.USER_NAME;
