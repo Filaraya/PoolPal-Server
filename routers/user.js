@@ -31,6 +31,38 @@ userRouter
     });
 
 userRouter
+    .route('/users/login')
+    .post(function(request, response) {
+        console.log('GET /users/login');
+        console.log(request.body);
+
+        var userEmail = request.body.email;
+        var userPassword = request.body.password;
+
+        console.log(userEmail);
+
+        User.findOne({ email: userEmail }, function(error, user) {
+            if (error) {
+                response.status(500).send(error);
+                return;
+            }
+
+            console.log(user);
+
+            if (user.password == userPassword) {
+                console.log('authenticated');
+                response.json(user);
+            }
+            else {
+                console.log('incorrect password');
+                response.json('incorrect password');
+            }
+
+        });
+    })
+
+
+userRouter
     .route('/users/:userId')
     .get(function(request, response) {
         console.log('GET /users/:userId');
