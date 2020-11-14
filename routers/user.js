@@ -84,6 +84,7 @@ userRouter
     })
     .put(function (request, response) {
         console.log('PUT /users/:userId');
+	console.log(request.body);
 
         var userId = request.params.userId;
 
@@ -97,7 +98,6 @@ userRouter
             }
 
             if (user) {
-                console.log(user);
                 user.email = request.body.email;
                 user.name = request.body.name;
                 user.pool_gallons = request.body.pool_gallons;
@@ -109,7 +109,7 @@ userRouter
                 user.chemicals.alkalinity_down = request.body.chemicals.alkalinity_down;
                 user.chemicals.calcium_up = request.body.chemicals.calcium_up;
                 user.chemicals.calcium_down = request.body.chemicals.calcium_down;
-                
+
                 user.save();
 
                 response.json(user);
@@ -142,6 +142,8 @@ userRouter
                 }
 
                 user.save();
+
+		console.log(user);
 
                 response.json(user);
                 return;
