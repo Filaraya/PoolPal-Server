@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 var readingSchema = new Schema({
     user_id: {
-        type: Number,
+        type: String,
         required: true,
     },
     reading_date: {
