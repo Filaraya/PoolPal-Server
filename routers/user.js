@@ -87,13 +87,17 @@ userRouter
 
         var userId = request.params.userId;
 
+	console.log(userId);
+
         User.findOne({ _id: userId }, function(error, user) {
             if (error) {
+		console.log('error finding user');
                 response.status(500).send(error);
                 return;
             }
 
             if (user) {
+		console.log(user);
                 user.user_date = request.body.user_date;
                 user.free_chlorine = request.body.free_chlorine;
                 user.combined_chlorine = request.body.combined_chlorine;
