@@ -31,23 +31,23 @@ readingRouter
     });
 
 readingRouter
-    .route('/readings/:readingId')
+    .route('/readings/:userId')
     .get(function(request, response) {
-        console.log('GET /readings/:readingId');
+        console.log('GET /readings/:userId');
 
-        var readingId = request.params.readingId;
+        var userId = request.params.userId;
 
-        console.log(readingId);
+        console.log(userId);
 
-        Reading.findOne({ _id: readingId }, function(error, reading) {
+        Reading.find({ user_id: userId }, function(error, readings) {
             if (error) {
                 response.status(500).send(error);
                 return;
             }
 
-            console.log(reading);
+            console.log(readings);
 
-            response.json(reading);
+            response.json(readings);
         });
     })
     .put(function(request, response) {
