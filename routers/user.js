@@ -39,26 +39,31 @@ userRouter
         var userEmail = request.body.email;
         var userPassword = request.body.password;
 
-        console.log(userEmail);
+        try {
+            User.findOne({ email: userEmail }, function (error, user) {
+                if (error) {
+                    response.status(500).send(error);
+                    return;
+                }
 
-        User.findOne({ email: userEmail }, function (error, user) {
-            if (error) {
-                response.status(500).send(error);
-                return;
-            }
+                console.log(user);
 
-            console.log(user);
+                if (user.password == userPassword) {
+                    console.log('authenticated');
+                    response.json(user);
+                }
+                else {
+                    console.log('incorrect password');
+                    response.json('incorrect password');
+                }
 
-            if (user.password == userPassword) {
-                console.log('authenticated');
-                response.json(user);
-            }
-            else {
-                console.log('incorrect password');
-                response.json('incorrect password');
-            }
+            });
 
-        });
+        } catch (error) {
+            console.log('incorrect password');
+            response.json('incorrect password');
+        }
+
     })
 
 
@@ -84,7 +89,7 @@ userRouter
     })
     .put(function (request, response) {
         console.log('PUT /users/:userId');
-	console.log(request.body);
+        console.log(request.body);
 
         var userId = request.params.userId;
 
@@ -143,7 +148,7 @@ userRouter
 
                 user.save();
 
-		console.log(user);
+                console.log(user);
 
                 response.json(user);
                 return;
