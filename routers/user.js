@@ -48,7 +48,7 @@ userRouter
 
                 console.log(user);
 
-                if (user.password == userPassword) {
+                if (user !== null && user.password == userPassword) {
                     console.log('authenticated');
                     response.json(user);
                 }
