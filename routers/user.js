@@ -71,27 +71,20 @@ userRouter
 
         console.log(userId);
 
-        try {
-            User.findOne({ _id: userId }, function (error, user) {
-                if (error) {
-                    response.status(500).send(error);
-                    return;
-                }
+        User.findOne({ _id: userId }, function (error, user) {
+            if (error) {
+                response.status(500).send(error);
+                return;
+            }
 
-                console.log(user);
+            console.log(user);
 
-                response.json(user);
-            });
-
-        } catch (error) {
-            response.status(500).send(error);
-            return;
-        }
-
+            response.json(user);
+        });
     })
     .put(function (request, response) {
         console.log('PUT /users/:userId');
-        console.log(request.body);
+	console.log(request.body);
 
         var userId = request.params.userId;
 
@@ -150,7 +143,7 @@ userRouter
 
                 user.save();
 
-                console.log(user);
+		console.log(user);
 
                 response.json(user);
                 return;
