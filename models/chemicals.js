@@ -6,6 +6,10 @@ var chemicalSchema = new Schema({
         type: String,
         required: true,
     },
+    effects: {
+        type: Array,
+        required: true,
+    },
     free_chlorine: {
         type: Number,
         required: false,
