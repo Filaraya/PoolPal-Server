@@ -6,6 +6,9 @@ const targetPh = 7.4;
 const phUpAmountOz = 60;
 const phDownAmountOz = 12;
 
+const targetAlkalinity = 100;
+const alkalinityUpAmountLbs = 1.5;
+
 chemicalRouter
     .route('/chemicals')
     .get(function(request, response) {
@@ -26,12 +29,17 @@ chemicalRouter
             }
 
             if (ph < targetPh) {
-                console.log('Add ' + (targetPh - ph) * phUpAmountOz * user.pool_gallons / 10000 + ' oz of ' + user.chemicals[0].ph_up);
+                console.log('Add ' + (targetPh - ph) * phUpAmountOz * user.pool_gallons / 10000 + ' oz of ' + user.chemicals[0].ph_up + ' to raise pH to ' + targetPh);
             }
             if (ph > targetPh) {
-                console.log('Add ' + (ph - targetPh) * phDownAmountOz * user.pool_gallons / 10000 + ' oz of ' + user.chemicals[0].ph_down);
+                console.log('Add ' + (ph - targetPh) * phDownAmountOz * user.pool_gallons / 10000 + ' oz of ' + user.chemicals[0].ph_down + ' to reduce pH to ' + targetPh);
             }
+            if (alkalinity < targetAlkalinity) {
+                console.log('Add ' + (targetAlkalinity - alkalinity) / 10 * alkalinityUpAmountLbs * user.pool_gallons / 10000 + ' lbs of ' + user.chemicals[0].alkalinity_up + ' to raise alkalinity to ' + targetAlkalinity);
+            }
+            console.log(user);
         });
+
 
         response.json(user);
     });
