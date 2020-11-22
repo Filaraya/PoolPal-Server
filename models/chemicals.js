@@ -30,6 +30,6 @@ var chemicalSchema = new Schema({
         type: Number,
         required: false,
     },
-}, { collection: 'Reading' });
+}, { collection: 'Chemicals' });
 
-module.exports = mongoose.model('Reading', readingSchema);
+module.exports = mongoose.model('Chemicals', chemicalSchema);
