@@ -29,6 +29,9 @@ chemicalRouter
             response.json(chemicals);
         });
     })
+
+chemicalRouter
+    .route('/chemicals/:chemicalId')
     .delete(function (request, response) {
         console.log('DELETE /chemicals/:chemicalId');
 
