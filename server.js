@@ -4,6 +4,7 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var readingRouter = require('./routers/reading');
 var userRouter = require('./routers/user');
+var chemicalRouter = require('./routers/chemicals');
 var cors = require('cors');
 
 var app = express();
@@ -25,6 +26,7 @@ app.use(bodyParser.urlencoded({
 
 app.use('/api', readingRouter);
 app.use('/api', userRouter);
+app.use('/api', chemicalRouter);
 
 app.listen(PORT, function() {
     console.log('Listening on port ' + PORT);
