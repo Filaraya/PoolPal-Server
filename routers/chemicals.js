@@ -4,10 +4,11 @@ var chemicalRouter = express.Router();
 
 const targetPh = 7.4;
 const phUpAmountOz = 60;
+const phDownAmountOz = 12;
 
 chemicalRouter
     .route('/chemicals')
-    .get(function (request, response) {
+    .get(function(request, response) {
         console.log('GET /chemicals');
 
         var alkalinity = request.body.alkalinity;
@@ -18,19 +19,19 @@ chemicalRouter
         var ph = request.body.ph;
         var userId = request.body.user_id;
 
-        User.findOne({ _id: userId }, function (error, user) {
+        User.findOne({ _id: userId }, function(error, user) {
             if (error) {
                 response.status(500).send(error);
                 return;
             }
 
-            console.log('Add ' + (targetPh - ph) * phUpAmountOz + ' oz of ' + user.chemicals[0].ph_up);
-            console.log(user);
-            console.log(alkalinity);
+            if (ph < targetPh) {
+                console.log('Add ' + (targetPh - ph) * phUpAmountOz * user.pool_gallons / 10000 + ' oz of ' + user.chemicals[0].ph_up);
+            }
+            if (ph > targetPh) {
+                console.log('Add ' + (ph - targetPh) * phDownAmountOz * user.pool_gallons / 10000 + ' oz of ' + user.chemicals[0].ph_down);
+            }
         });
-
-
-        console.log(user);
 
         response.json(user);
     });
