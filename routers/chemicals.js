@@ -28,6 +28,36 @@ chemicalRouter
 
             response.json(chemicals);
         });
+    })
+    .delete(function (request, response) {
+        console.log('DELETE /chemicals/:chemicalId');
+
+        var chemicalId = request.params.chemicalId;
+
+        Chemical.findOne({ _id: chemicalId }, function (error, chemical) {
+            if (error) {
+                response.status(500).send(error);
+                return;
+            }
+
+            if (chemical) {
+                chemical.remove(function (error) {
+                    if (error) {
+                        response.status(500).send(error);
+                        return;
+                    }
+
+                    response.status(200).json({
+                        message: 'Chemical with id ' + chemicalId + ' was removed.',
+                    });
+                });
+            } else {
+                response.status(404).json({
+                    message: 'Chemical with id ' + chemicalId + ' was not found.',
+                });
+            }
+        });
     });
+;
 
 module.exports = chemicalRouter;
