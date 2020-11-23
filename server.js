@@ -17,10 +17,10 @@ var PASSWORD = process.env.PASSWORD;
 var HOST_NAME = 'cluster0.xusy1.mongodb.net';
 var DATABASE_NAME = 'PoolPal';
 
-connect('mongodb+srv://' + USER_NAME + ':' + PASSWORD + '@' + HOST_NAME + '/' + DATABASE_NAME);
+mongoose.connect('mongodb+srv://' + USER_NAME + ':' + PASSWORD + '@' + HOST_NAME + '/' + DATABASE_NAME);
 
-app.use(json());
-app.use(urlencoded({
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
     extended: true
 }));
 
@@ -28,6 +28,6 @@ app.use('/api', readingRouter);
 app.use('/api', userRouter);
 app.use('/api', chemicalRouter);
 
-app.listen(PORT, function() {
+app.listen(PORT, function () {
     console.log('Listening on port ' + PORT);
 });
