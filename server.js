@@ -1,11 +1,11 @@
 // require('dotenv').config();
-import express from 'express';
-import { connect } from 'mongoose';
-import { json, urlencoded } from 'body-parser';
-import readingRouter from './routers/reading';
-import userRouter from './routers/user';
-import chemicalRouter from './routers/chemicals';
-import cors from 'cors';
+var express = require('express');
+var mongoose = require('mongoose');
+var bodyParser = require('body-parser');
+var readingRouter = require('./routers/reading');
+var userRouter = require('./routers/user');
+var chemicalRouter = require('./routers/chemicals');
+var cors = require('cors');
 
 var app = express();
 
