@@ -6,6 +6,7 @@ var readingRouter = require('./routers/reading');
 var userRouter = require('./routers/user');
 var chemicalRouter = require('./routers/chemicals');
 var cors = require('cors');
+const logger = require('pino');
 
 var app = express();
 
@@ -16,6 +17,8 @@ var USER_NAME = process.env.USER_NAME;
 var PASSWORD = process.env.PASSWORD;
 var HOST_NAME = 'cluster0.xusy1.mongodb.net';
 var DATABASE_NAME = 'PoolPal';
+
+logger.info(USER_NAME);
 
 mongoose.connect('mongodb+srv://' + USER_NAME + ':' + PASSWORD + '@' + HOST_NAME + '/' + DATABASE_NAME);
 
