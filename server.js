@@ -12,7 +12,7 @@ var app = express();
 
 app.use(cors());
 
-var PORT = 8080;
+const PORT = process.env.PORT || 3000;
 var USER_NAME = process.env.USER_NAME;
 var PASSWORD = process.env.PASSWORD;
 var HOST_NAME = 'cluster0.xusy1.mongodb.net';
