@@ -6,7 +6,7 @@ var readingRouter = require('./routers/reading');
 var userRouter = require('./routers/user');
 var chemicalRouter = require('./routers/chemicals');
 var cors = require('cors');
-const logger = require('pino');
+const logger = require('pino')();
 
 var app = express();
 
