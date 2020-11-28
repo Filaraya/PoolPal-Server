@@ -57,6 +57,26 @@ var userSchema = new Schema({
         type: String,
         required: false,
     },
+    target_chlorine: {
+        type: Number,
+        required: false,
+    },
+    target_ph: {
+        type: Number,
+        required: false,
+    },
+    target_alkalinity: {
+        type: Number,
+        required: false,
+    },
+    target_calcium: {
+        type: Number,
+        required: false,
+    },
+    target_cyanuric_acid: {
+        type: Number,
+        required: false,
+    },
     chemicals: [checmicalSchema],
 }, { collection: 'User' });
 

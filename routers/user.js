@@ -107,6 +107,11 @@ userRouter
                 user.name = request.body.name;
                 user.pool_gallons = request.body.pool_gallons;
                 user.pool_type = request.body.pool_type;
+                user.target_chlorine = request.body.target_chlorine;
+                user.target_ph = request.body.target_ph;
+                user.target_alkalinity = request.body.target_alkalinity;
+                user.target_calcium = request.body.target_calcium;
+                user.target_cyanuric_acid = request.body.target_cyanuric_acid;
                 user.chemicals.chlorine = request.body.chemicals.chlorine;
                 user.chemicals.ph_up = request.body.chemicals.ph_up;
                 user.chemicals.ph_down = request.body.chemicals.ph_down;
