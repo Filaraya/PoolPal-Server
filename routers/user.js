@@ -5,7 +5,7 @@ var userRouter = express.Router();
 
 userRouter
     .route('/users')
-    .post(function (request, response) {
+    .post(function(request, response) {
         console.log('POST /users');
         console.log(request.body);
 
@@ -15,10 +15,10 @@ userRouter
 
         response.status(201).send(user);
     })
-    .get(function (request, response) {
+    .get(function(request, response) {
         console.log('GET /users');
 
-        User.find(function (error, users) {
+        User.find(function(error, users) {
             if (error) {
                 response.status(500).send(error);
                 return;
@@ -32,7 +32,7 @@ userRouter
 
 userRouter
     .route('/users/login')
-    .post(function (request, response) {
+    .post(function(request, response) {
         console.log('GET /users/login');
         console.log(request.body);
 
@@ -40,7 +40,7 @@ userRouter
         var userPassword = request.body.password;
 
         try {
-            User.findOne({ email: userEmail }, function (error, user) {
+            User.findOne({ email: userEmail }, function(error, user) {
                 if (error) {
                     response.status(500).send(error);
                     return;
@@ -51,8 +51,7 @@ userRouter
                 if (user !== null && user.password == userPassword) {
                     console.log('authenticated');
                     response.json(user);
-                }
-                else {
+                } else {
                     console.log('incorrect password');
                     response.json('incorrect password');
                 }
@@ -69,14 +68,14 @@ userRouter
 
 userRouter
     .route('/users/:userId')
-    .get(function (request, response) {
+    .get(function(request, response) {
         console.log('GET /users/:userId');
 
         var userId = request.params.userId;
 
         console.log(userId);
 
-        User.findOne({ _id: userId }, function (error, user) {
+        User.findOne({ _id: userId }, function(error, user) {
             if (error) {
                 response.status(500).send(error);
                 return;
@@ -87,7 +86,7 @@ userRouter
             response.json(user);
         });
     })
-    .put(function (request, response) {
+    .put(function(request, response) {
         console.log('PUT /users/:userId');
         console.log(request.body);
 
@@ -95,7 +94,7 @@ userRouter
 
         console.log(userId);
 
-        User.findOne({ _id: userId }, function (error, user) {
+        User.findOne({ _id: userId }, function(error, user) {
             if (error) {
                 console.log('error finding user');
                 response.status(500).send(error);
@@ -119,6 +118,7 @@ userRouter
                 user.chemicals.alkalinity_down = request.body.chemicals.alkalinity_down;
                 user.chemicals.calcium_up = request.body.chemicals.calcium_up;
                 user.chemicals.calcium_down = request.body.chemicals.calcium_down;
+                user.chemicals.cyanuric_acid_up = request.body.chemicals.cyanuric_acid_up;
 
                 user.save();
 
@@ -131,12 +131,12 @@ userRouter
             });
         });
     })
-    .patch(function (request, response) {
+    .patch(function(request, response) {
         console.log('PATCH /users/:userId');
 
         var userId = request.params.userId;
 
-        User.findOne({ _id: userId }, function (error, user) {
+        User.findOne({ _id: userId }, function(error, user) {
             if (error) {
                 response.status(500).send(error);
                 return;
@@ -164,19 +164,19 @@ userRouter
             });
         });
     })
-    .delete(function (request, response) {
+    .delete(function(request, response) {
         console.log('DELETE /users/:userId');
 
         var userId = request.params.userId;
 
-        User.findOne({ _id: userId }, function (error, user) {
+        User.findOne({ _id: userId }, function(error, user) {
             if (error) {
                 response.status(500).send(error);
                 return;
             }
 
             if (user) {
-                user.remove(function (error) {
+                user.remove(function(error) {
                     if (error) {
                         response.status(500).send(error);
                         return;

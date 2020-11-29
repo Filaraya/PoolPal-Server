@@ -30,6 +30,10 @@ var checmicalSchema = new Schema({
         type: String,
         required: false,
     },
+    cyanuric_acid_up: {
+        type: String,
+        required: false,
+    },
 })
 
 var userSchema = new Schema({
