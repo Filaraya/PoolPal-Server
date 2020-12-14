@@ -16,8 +16,8 @@ try running the following command.
 
 ```sh
 $ npm -v && node -v
-6.4.1
-v8.16.0
+6.14.7
+v14.9.0
 ```
 ## Getting Started
 
@@ -86,6 +86,7 @@ If you want to contact me you can reach me at <email>.
 ## License
 
 This project uses the following license: [<license_name>](<link>).
-More detail:
+
+## More detail:
 This repository contains code for the service-layer portion of the application. Below is a link to the repository containing the code for the front-end of the application:
 https://github.com/kylekanderson/PoolPal
